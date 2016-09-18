@@ -4,12 +4,10 @@ source "https://rubygems.org"
 if RUBY_VERSION =~ /^2\.2\.[0-1]p?\d*/ || RUBY_VERSION =~ /^2\.1\.\d*p?\d*/
   gem "activesupport", "~> 4.2"
   gem "json", "~> 1.7"
-  gem "rubocop", platforms: :mri, groups: [:test, :local_development]
 elsif RUBY_VERSION =~ /^2\.0\..*/
   gem "activesupport", "~> 4.2"
   gem "json", "~> 1.7"
   gem "unparser", "0.2.4"
-  gem "rubocop", platforms: :mri, groups: [:test, :local_development]
 elsif RUBY_VERSION =~ /^1\.9\.3.*/
   gem "activesupport", "~> 4.2"
   gem "json", "~> 1.7"
@@ -17,7 +15,6 @@ elsif RUBY_VERSION =~ /^1\.9\.3.*/
   gem "json_pure", "2.0.1"
   gem "mime-types", "2.99.3"
   gem "rest-client", "1.8.0"
-  gem "rubocop", platforms: :mri, groups: [:test, :local_development]
 elsif RUBY_VERSION =~ /^1\.9\.2.*/
   # because of https://github.com/railsbp/rails_best_practices/blob/master/rails_best_practices.gemspec
   gem "activesupport", "~> 3.2"
@@ -44,6 +41,9 @@ end
 group :test, :local_development  do
   gem "pry"
   gem "pry-nav"
+  platform :mri do
+    gem "rubocop" unless RUBY_VERSION =~ /^1\.9\.2.*/
+  end
 end
 
 # Added by devtools
