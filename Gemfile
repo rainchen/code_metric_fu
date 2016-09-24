@@ -4,12 +4,10 @@ source "https://rubygems.org"
 if RUBY_VERSION =~ /^2\.2\.[0-1]p?\d*/ || RUBY_VERSION =~ /^2\.1\.\d*p?\d*/
   gem "activesupport", "~> 4.2"
   gem "json", "~> 1.7"
-  gem "rubocop", platforms: :mri, groups: [:test, :local_development]
 elsif RUBY_VERSION =~ /^2\.0\..*/
   gem "activesupport", "~> 4.2"
   gem "json", "~> 1.7"
   gem "unparser", "0.2.4"
-  gem "rubocop", platforms: :mri, groups: [:test, :local_development]
 elsif RUBY_VERSION =~ /^1\.9\.3.*/
   gem "activesupport", "~> 4.2"
   gem "json", "~> 1.7"
@@ -42,6 +40,7 @@ platform :jruby do
 end
 
 group :test, :local_development  do
+  gem "rubocop", "< 0.36", platforms: :mri
   gem "pry"
   gem "pry-nav"
 end
