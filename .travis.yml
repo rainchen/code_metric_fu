@@ -2,16 +2,19 @@ sudo: false
 language: ruby
 bundler_args: --path vendor/bundle --jobs=3 --retry=3
 script:
-  - bundle exec rspec
-  - bundle exec ruby -Ilib bin/metric_fu
-  - bundle exec rubocop
   - bundle exec rake
+  - bundle exec ruby -Ilib bin/metric_fu --no-open
+  - bundle exec rubocop --config .rubocop.yml
+  - SKIP_GEM_SIGNING=true gem build *.gemspec && gem install *.gem --local && metric_fu --no-open
 
 cache: bundler
 
 before_install:
   - gem install bundler
   - bundle config --local without local_development yard guard
+  - gem env
+  - bundle env
+
 rvm:
   # 2.1, not 2.1.0 until fixed https://github.com/travis-ci/travis-ci/issues/2220
   - 2.3.1
@@ -23,6 +26,7 @@ rvm:
   - 1.9.3
   - jruby
   - "rbx-2"
+
 matrix:
   allow_failures:
     - rvm: rbx-2
