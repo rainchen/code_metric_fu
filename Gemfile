@@ -17,6 +17,7 @@ elsif RUBY_VERSION =~ /^1\.9\.3.*/
   gem "json_pure", "2.0.1"
   gem "mime-types", "2.99.3"
   gem "rest-client", "1.8.0"
+  gem "reek", "2.2.1"
   gem "rubocop", platforms: :mri, groups: [:test, :local_development]
 elsif RUBY_VERSION =~ /^1\.9\.2.*/
   # because of https://github.com/railsbp/rails_best_practices/blob/master/rails_best_practices.gemspec
