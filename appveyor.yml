@@ -4,6 +4,8 @@ skip_tags: true
 
 environment:
   matrix:
+    - RUBY_VERSION: 23
+    - RUBY_VERSION: 23-x64
     - RUBY_VERSION: 22
     - RUBY_VERSION: 22-x64
     - RUBY_VERSION: 21
@@ -13,8 +15,8 @@ environment:
 
 install:
   - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
-  - gem install bundler
-  - bundle install --path=vendor/bundle --retry=3 --jobs=3
+  - bundle config --local path vendor/bundle
+  - bundle install
 
 cache:
   - vendor/bundle

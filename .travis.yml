@@ -7,16 +7,18 @@ cache: bundler
 before_install:
   - gem install bundler
   - bundle config --local without local_development yard guard
+
 rvm:
-  # 2.1, not 2.1.0 until fixed https://github.com/travis-ci/travis-ci/issues/2220
-  - 2.2
-  - 2.1
+  - ruby-head
+  - 2.4.0
+  - 2.3.3
+  - 2.2.6
+  - 2.1.9
   - 2.0.0
-  - 1.9.2
   - 1.9.3
+  - 1.9.2
   - jruby
-  - "rbx-2"
+
 matrix:
   allow_failures:
-    - rvm: rbx-2
   fast_finish: true
