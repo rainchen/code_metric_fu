@@ -12,12 +12,12 @@
     <%= inline_css("css/bluff.css") %>
     </style>
     <link REL="SHORTCUT ICON" HREF="/favicon.ico">
-    <script language="javascript" src="utils.js" type="text/javascript"></script>
-    <script language="javascript" src="js-class.js" type="text/javascript"></script>
-    <script language="javascript" src="bluff-min.js" type="text/javascript"></script>
-    <script language="javascript" src="excanvas.js" type="text/javascript"></script>
-    <script language="javascript" src="standalone-framework.js" type="text/javascript"></script>
-    <script language="javascript" src="highcharts.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/utils.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/js-class.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/bluff-min.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/excanvas.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/standalone-framework.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/highcharts.js" type="text/javascript"></script>
   </head>
   <body>
     <div id='header'>
@@ -32,6 +32,6 @@
     </div>
 
     <% graph_engine = MetricFu.configuration.graph_engine.to_s %>
-    <script language="javascript" src="<%= graph_engine %>_graph.js" type="text/javascript"></script>
+    <script language="javascript" src="../javascripts/<%= graph_engine %>_graph.js" type="text/javascript"></script>
   </body>
 </html>

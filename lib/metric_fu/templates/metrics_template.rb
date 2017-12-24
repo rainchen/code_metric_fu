@@ -31,8 +31,9 @@ module MetricFu
     private
 
     def copy_javascripts
+      FileUtils.mkdir_p(File.join(output_directory, "javascripts"))
       Dir[File.join(template_directory, "javascripts", "*")].each do |f|
-        FileUtils.cp(f, File.join(output_directory, File.basename(f)))
+        FileUtils.cp(f, File.join(output_directory, "javascripts", File.basename(f)))
       end
     end
 
@@ -44,8 +45,10 @@ module MetricFu
         mf_debug "Generating html for section #{section} with #{template(section)} for result #{result.class}"
         self.html = erbify(section)
         layout = erbify("layout")
+        dir = "results"
+        FileUtils.mkdir_p(File.join(output_directory, dir))
         fn = output_filename(section)
-        formatter.write_template(layout, fn)
+        formatter.write_template(layout, "#{dir}/#{fn}")
       else
         mf_debug "no template for section #{section} with #{template(section)} for result #{result.class}"
       end
@@ -69,7 +72,10 @@ module MetricFu
         next unless File.file?(file)
         report = MetricFu::Templates::Report.new(file, lines).render
 
-        formatter.write_template(report, html_filename(file))
+        dir = "codes/" + File.dirname(file)
+        FileUtils.mkdir_p(File.join(output_directory, dir))
+        fn = File.basename(file) + ".html"
+        formatter.write_template(report, "#{dir}/#{fn}")
       end
     end
 

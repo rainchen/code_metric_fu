@@ -36,7 +36,7 @@ module MetricFu
         #{build_data(data)}
         var graph_labels = #{labels};
       EOS
-      File.open(File.join(output_directory, output_filename), "w") { |f| f << content }
+      File.open(File.join(output_directory, "results", output_filename), "w") { |f| f << content }
     end
 
     def title

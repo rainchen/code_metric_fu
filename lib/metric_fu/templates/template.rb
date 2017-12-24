@@ -134,7 +134,9 @@ module MetricFu
     # @return String
     #   An anchor link to a textmate reference or a file reference
     def link_to_filename(name, line = nil, link_content = nil)
-      href = file_url(name, line)
+      # href = file_url(name, line)
+      href = "../codes/#{name}.html"
+      href += "#n#{line}" if line
       link_text = link_content(name, line, link_content)
       "<a href='#{href}'>#{link_text}</a>"
     end
@@ -227,7 +229,7 @@ module MetricFu
 
     def metric_link(metric)
       <<-LINK
-      <a href="#{metric}.html">
+      <a href="results/#{metric}.html">
         #{snake_case_to_title_case(metric)}
       </a>
       LINK

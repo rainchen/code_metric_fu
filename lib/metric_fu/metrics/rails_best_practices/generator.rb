@@ -19,7 +19,7 @@ module MetricFu
     def analyze
       @problems = @output.collect do |problem|
         {
-          file: problem.filename,
+          file: problem.short_filename,
           line: problem.line_number,
           problem: problem.message,
           url: problem.url
