@@ -1,5 +1,5 @@
 <%
-gem_spec        = MetricFu::GemVersion.activated_gems.find { |g| g.name =~ /metric_fu/ }
+gem_spec        = Gem.loaded_specs["code_metric_fu"]
 gem_name        = gem_spec.name
 gem_version     = gem_spec.version.to_s
 gem_description = gem_spec.description
