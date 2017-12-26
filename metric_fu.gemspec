@@ -3,9 +3,9 @@ $:.push File.expand_path("../lib", __FILE__)
 require "metric_fu/version"
 
 Gem::Specification.new do |s|
-  s.name        = "metric_fu"
-  s.homepage    = "https://github.com/metricfu/metric_fu"
-  s.summary     = "A fistful of code metrics, with awesome templates and graphs"
+  s.name        = "code_metric_fu"
+  s.homepage    = "https://github.com/rainchen/code_metric_fu"
+  s.summary     = "A fistful of code metrics, with awesome templates and graphs(forked metric_fu)"
   s.description = "Code metrics from Flog, Flay, Saikuro, Churn, Reek, Roodi, Code Statistics, and Rails Best Practices. (and optionally RCov)"
   s.email       = "github@benjaminfleischer.com"
   author_file   = File.expand_path("AUTHORS", File.dirname(__FILE__))
