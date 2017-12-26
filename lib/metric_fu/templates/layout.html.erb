@@ -12,12 +12,14 @@
     <%= inline_css("css/bluff.css") %>
     </style>
     <link REL="SHORTCUT ICON" HREF="/favicon.ico">
+    <% if not @disable_js %>
     <script language="javascript" src="../javascripts/utils.js" type="text/javascript"></script>
     <script language="javascript" src="../javascripts/js-class.js" type="text/javascript"></script>
     <script language="javascript" src="../javascripts/bluff-min.js" type="text/javascript"></script>
     <script language="javascript" src="../javascripts/excanvas.js" type="text/javascript"></script>
     <script language="javascript" src="../javascripts/standalone-framework.js" type="text/javascript"></script>
     <script language="javascript" src="../javascripts/highcharts.js" type="text/javascript"></script>
+    <% end %>
   </head>
   <body>
     <div id='header'>
@@ -31,7 +33,9 @@
       <%= @html %>
     </div>
 
+    <% if not @disable_js %>
     <% graph_engine = MetricFu.configuration.graph_engine.to_s %>
     <script language="javascript" src="../javascripts/<%= graph_engine %>_graph.js" type="text/javascript"></script>
+    <% end %>
   </body>
 </html>
