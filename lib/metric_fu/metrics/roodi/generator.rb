@@ -22,6 +22,7 @@ module MetricFu
         problem = match[1]
         { file: file, line: line, problem: problem }
       end
+      total << "Found #{@matches.size} errors."
       @roodi_results = { total: total, problems: @matches }
     end
 

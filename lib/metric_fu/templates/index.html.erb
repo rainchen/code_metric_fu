@@ -1,8 +1,9 @@
 <h3><%= MetricFu.metric_name %> Results</h3>
 <ul id='projects'>
-<% metric_links.each do |link| %>
+<% metrics.each do |metric, data| %>
   <li class='even failure'>
-    <%= link %>
+    <%= metric_link(metric.to_s) %>
+    <%= data[:total].to_s %>
   </li>
 <% end %>
 </ul>

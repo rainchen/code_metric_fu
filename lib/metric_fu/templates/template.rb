@@ -228,8 +228,9 @@ module MetricFu
     end
 
     def metric_link(metric)
+      metric_summary = Gem.loaded_specs[metric.to_s]&.summary
       <<-LINK
-      <a href="results/#{metric}.html">
+      <a href="results/#{metric}.html" title="#{metric_summary}">
         #{snake_case_to_title_case(metric)}
       </a>
       LINK
