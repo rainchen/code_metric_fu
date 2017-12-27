@@ -1,8 +1,17 @@
 <h3>Reek Results</h3>
 
-<p><a href="http://github.com/troessner/reek">Reek</a> detects common code smells in ruby code.</p>
+<p><a href="http://github.com/troessner/reek">Reek</a> detects common <a href="https://github.com/troessner/reek/blob/master/docs/Code-Smells.md">code smells</a> in ruby code.</p>
 
 <%= render_partial 'graph', {:graph_name => 'reek'} %>
+
+<%
+# e.g.: https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md
+def code_smell_type_url(type)
+  doc_url = "https://github.com/troessner/reek/blob/master/docs/%{page}.md"
+  page = type.titlecase.tr(" ", "-")
+  doc_url % {page: page}
+end
+%>
 
 <table>
   <tr>
@@ -23,7 +32,7 @@
           <%= smell[:message] %>
         </td>
         <td>
-          <%= smell[:type] %>
+          <a href="<%= code_smell_type_url(smell[:type]) %>"><%= smell[:type] %></a>
         </td>
       </tr>
       <% count += 1 %>
