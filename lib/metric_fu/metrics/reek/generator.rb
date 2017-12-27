@@ -28,10 +28,13 @@ module MetricFu
         { file_path: file_path,
           code_smells: analyze_smells(smells) }
       end
+      @total = []
+      @total << "Detected #{@matches.size} files"
+      @total << "Found #{@matches.sum { |m| m[:code_smells].size }} code smells"
     end
 
     def to_h
-      { reek: { matches: @matches } }
+      { reek: { matches: @matches, total: @total } }
     end
 
     def per_file_info(out)
