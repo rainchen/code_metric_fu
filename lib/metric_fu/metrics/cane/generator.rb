@@ -23,7 +23,7 @@ module MetricFu
     end
 
     def to_h
-      { cane: { total_violations: @total_violations, violations: @violations } }
+      { cane: { total_violations: @total_violations, violations: @violations, total: @total } }
     end
 
     private
@@ -87,6 +87,7 @@ module MetricFu
     def extract_total_violations
       if @output =~ /Total Violations: (\d+)/
         @total_violations = $1.to_i
+        @total = "Total Violations #{@total_violations}"
       else
         @total_violations = 0
       end
