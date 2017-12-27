@@ -19,6 +19,11 @@ module MetricFu
       set_global_stats(lines.pop)
       set_granular_stats(lines)
 
+      @stats[:total] = []
+      @stats[:total] << "Lines of Code: #{@stats[:codeLOC]}"
+      @stats[:total] << "Lines of Test: #{@stats[:testLOC]}"
+      @stats[:total] << "Code to test ratio: #{@stats[:code_to_test_ratio]}"
+
       @stats
     end
 
