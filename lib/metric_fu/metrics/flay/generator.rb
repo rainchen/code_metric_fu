@@ -31,6 +31,7 @@ module MetricFu
       end
       {
         total_score: total_score,
+        total: "Total Score #{total_score}",
         matches: target.flatten
       }
     end
