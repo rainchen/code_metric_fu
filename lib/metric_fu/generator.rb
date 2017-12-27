@@ -90,6 +90,21 @@ module MetricFu
       metric_config.run_external(args)
     end
 
+    # temporarily redirect stderr
+    # usage: silence_streams(STDERR) { STDERR.puts "something wrong" }
+    def silence_streams(*streams)
+      on_hold = streams.collect { |stream| stream.dup }
+      streams.each do |stream|
+        stream.reopen(RUBY_PLATFORM =~ /mswin/ ? 'NUL:' : '/dev/null')
+        stream.sync = true
+      end
+      yield
+    ensure
+      streams.each_with_index do |stream, i|
+        stream.reopen(on_hold[i])
+      end
+    end
+
     # Provides a template method to drive the production of a metric
     # from a concrete implementation of this class.  Each concrete
     # class must implement the three methods that this template method

@@ -9,7 +9,9 @@ module MetricFu
       files = remove_excluded_files(files_to_analyze.flatten)
       config = options[:roodi_config] ? "-config=#{options[:roodi_config]}" : ""
       args = "#{config} #{files.join(' ')}"
-      @output = run!(args)
+      silence_streams(STDERR) do
+        @output = run!(args)
+      end
     end
 
     def analyze
